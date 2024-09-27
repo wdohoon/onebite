@@ -1,7 +1,10 @@
+import '../css/Edit.css';
+
 const Editor = () => {
     return (
-        <div>
-
+        <div className="Editor">
+            <input placeholder="새로운 Todo..."/>
+            <button>추가</button>
         </div>
     )
 }
