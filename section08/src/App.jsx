@@ -1,19 +1,41 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import './App.css'
 import Header from './components/Header'
 import Editor from './components/Editor'
 import List from './components/List'
 
-function App() {
-  const [count, setCount] = useState(0)
+const mockData = [
+    {
+        id : 0,
+        isDone : false,
+        content : "React",
+        date : new Date().getTime(),
+    },
+    {
+        id : 1,
+        isDone : false,
+        content : "공부",
+        date : new Date().getTime(),
+    },
+    {
+        id : 2,
+        isDone : false,
+        content : "학습",
+        date : new Date().getTime(),
+    },
+];
 
-  return (
-    <div className="App">
-      <Header />
-      <Editor />
-      <List />
-    </div>
-  )
+function App() {
+
+    const [todos, setTodos] = useState([])
+
+    return (
+        <div className="App">
+            <Header/>
+            <Editor/>
+            <List/>
+        </div>
+    )
 }
 
 export default App
