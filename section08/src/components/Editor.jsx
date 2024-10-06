@@ -20,5 +20,4 @@ const Editor = ({ onCreate }) => {
     )
 }
 
-
 export default Editor;
