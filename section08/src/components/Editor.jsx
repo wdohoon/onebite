@@ -1,7 +1,7 @@
 import '../css/Edit.css';
 import {useRef, useState} from "react";
 
-const Editor = ({ onCreate }) => {
+const Editor = ({onCreate}) => {
 
     const [content, setContent] = useState('');
     const contentRef = useRef();
@@ -10,14 +10,14 @@ const Editor = ({ onCreate }) => {
         setContent(e.target.value);
     }
 
-    const onKeydown = (e)=>{
-        if(e.keyCode === 13) {
+    const onKeydown = (e) => {
+        if (e.keyCode === 13) {
             onSubmit();
         }
     };
 
     const onSubmit = () => {
-        if ( content === "" ){
+        if (content === "") {
             contentRef.current.focus();
             return;
         }
