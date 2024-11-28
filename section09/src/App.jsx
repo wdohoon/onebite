@@ -1,9 +1,8 @@
-import {useState, useRef, useReducer} from 'react'
-import './App.css'
-import Header from './components/Header'
-import Editor from './components/Editor'
-import List from './components/List'
-import Exam from "./components/Exam.jsx";
+import { useRef, useReducer } from 'react';
+import './App.css';
+import Header from './components/Header';
+import Editor from './components/Editor';
+import List from './components/List';
 
 const mockData = [
   {
@@ -33,8 +32,9 @@ function reducer(state, action) {
     case 'UPDATE':
       return state.map((item) =>
         item.id === action.targetId
-          ? {...item, isDone: !item.isDone}
-          : item);
+          ? { ...item, isDone: !item.isDone }
+          : item
+      );
     case 'DELETE':
       return state.filter((item) => item.id !== action.targetId);
     default:
@@ -55,36 +55,35 @@ function App() {
         content: content,
         date: new Date().getTime(),
       }
-    })
-  }
+    });
+  };
 
   const onUpdate = (targetId) => {
     dispatch({
       type: "UPDATE",
       targetId: targetId,
-    })
-  }
+    });
+  };
 
   const onDelete = (targetId) => {
     dispatch({
       type: "DELETE",
       targetId: targetId,
-    })
+    });
   };
 
   return (
     <div className="App">
-      {/*<Exam />*/}
-      {/*            <Header/>
-            <Editor onCreate={onCreate}
-            />
-            <List
-                todos={todos}
-                onUpdate={onUpdate}
-                onDelete={onDelete}
-            />*/}
+      <Header />
+      <Editor onCreate={onCreate} />
+      <List
+        todos={todos}
+        onUpdate={onUpdate}
+        onDelete={onDelete}
+      />
+      {/* <Exam /> */} {/* 필요 시 주석 해제 */}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
