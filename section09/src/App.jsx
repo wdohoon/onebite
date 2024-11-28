@@ -81,7 +81,6 @@ function App() {
         onUpdate={onUpdate}
         onDelete={onDelete}
       />
-      {/* <Exam /> */} {/* 필요 시 주석 해제 */}
     </div>
   );
 }
