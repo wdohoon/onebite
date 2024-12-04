@@ -4,11 +4,7 @@ import Home from "./pages/Home.jsx";
 import New from "./pages/New.jsx";
 import Diary from "./pages/Diary.jsx";
 
-import emotion1 from "./assets/emotion1.png"
-import emotion2 from "./assets/emotion2.png"
-import emotion3 from "./assets/emotion3.png"
-import emotion4 from "./assets/emotion4.png"
-import emotion5 from "./assets/emotion5.png"
+import {getEmotionImage} from "./util/get-emotion-image.js";
 
 function App() {
   const nav = useNavigate();
@@ -20,11 +16,11 @@ function App() {
   return (
     <>
       <div>
-        <img src={emotion1} alt="emotion1" />
-        <img src={emotion2} alt="emotion2" />
-        <img src={emotion3} alt="emotion3" />
-        <img src={emotion4} alt="emotion4" />
-        <img src={emotion5} alt="emotion5" />
+        <img src={getEmotionImage(1)} alt="emotion1" />
+        <img src={getEmotionImage(2)} alt="emotion2" />
+        <img src={getEmotionImage(3)} alt="emotion3" />
+        <img src={getEmotionImage(4)} alt="emotion4" />
+        <img src={getEmotionImage(5)} alt="emotion5" />
       </div>
       <div>
         <Link to={"/"}>Home</Link>
