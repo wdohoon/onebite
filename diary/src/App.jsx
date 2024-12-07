@@ -5,7 +5,7 @@ import New from "./pages/New.jsx";
 import Diary from "./pages/Diary.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Edit from "./pages/Edit.jsx";
-import {useReducer, useRef} from "react";
+import {createContext, useReducer, useRef} from "react";
 // import {getEmotionImage} from "./util/get-emotion-image.js";
 
 const mockData = [
@@ -35,6 +35,9 @@ function reducer(state, action) {
       return state;
   }
 }
+
+const DiaryStateContext = createContext();
+const DiaryDispatchContext = createContext();
 
 function App() {
   const [data, dispatch] = useReducer(reducer, mockData);
@@ -76,24 +79,17 @@ function App() {
 
   return (
     <>
-      <button onClick={() => {
-        onCreate(new Date().getTime(), 1, "Hello");
-      }}>일기 추가 테스트
-      </button>
-      <button onClick={() => {
-        onUpdate(1, new Date().getTime(), 3, "수정");
-      }}>수정 테스트
-      </button>
-      <button onClick={()=>{
-        onDelete(1)
-      }}>삭제</button>
-      <Routes>
-        <Route path="/" component={<Home/>}/>
-        <Route path="/new" component={<New/>}/>
-        <Route path="/diary/:id" component={<Diary/>}/>
-        <Route path="/edit/:id" component={<Edit/>}/>
-        <Route path="*" component={<NotFound/>}/>
-      </Routes>
+      <DiaryStateContext.Provider value={data}>
+        <DiaryDispatchContext.Provider value={{onCreate, onUpdate, onDelete,}}>
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/new" element={<New/>}/>
+            <Route path="/diary/:id" element={<Diary/>}/>
+            <Route path="/edit/:id" element={<Edit/>}/>
+            <Route path="*" element={<NotFound/>}/>
+          </Routes>
+        </DiaryDispatchContext.Provider>
+      </DiaryStateContext.Provider>
     </>
   )
 }
